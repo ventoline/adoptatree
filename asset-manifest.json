@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/adoptatree/static/css/main.073c9b0a.css",
-    "main.js": "/adoptatree/static/js/main.e4c97b65.js",
+    "main.css": "/adoptatree/static/css/main.124eaa9a.css",
+    "main.js": "/adoptatree/static/js/main.c9a1c455.js",
     "static/js/787.aa117cb6.chunk.js": "/adoptatree/static/js/787.aa117cb6.chunk.js",
     "static/media/logo.svg": "/adoptatree/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/adoptatree/index.html",
-    "main.073c9b0a.css.map": "/adoptatree/static/css/main.073c9b0a.css.map",
-    "main.e4c97b65.js.map": "/adoptatree/static/js/main.e4c97b65.js.map",
+    "main.124eaa9a.css.map": "/adoptatree/static/css/main.124eaa9a.css.map",
+    "main.c9a1c455.js.map": "/adoptatree/static/js/main.c9a1c455.js.map",
     "787.aa117cb6.chunk.js.map": "/adoptatree/static/js/787.aa117cb6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.e4c97b65.js"
+    "static/css/main.124eaa9a.css",
+    "static/js/main.c9a1c455.js"
   ]
 }
