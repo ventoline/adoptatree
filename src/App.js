@@ -34,10 +34,10 @@ let treeTypes
       index) => ptArray.indexOf(item) === index);
   
       console.log(treeTypes);
-      console.log(ptType);
+     // console.log(ptType);
 
 let colors = [
-  [0,0,0], 
+  [0,0,0],  [240,240,240] //black and white for special cases
 ]
 
 for (let i = colors.length-1; i < treeTypes.length -1; i++ )
@@ -83,7 +83,7 @@ function App() {
  
       getPosition:  d => d.geometry.coordinates,
       getRadius:   d => d.properties.CrownRad,
-      getFillColor: d =>  colors[treeTypes.indexOf(d.properties.SP_CODE.toString())]
+      getFillColor: d =>  d.properties.SP_CODE? colors[treeTypes.indexOf(d.properties.SP_CODE.toString())] : colors[1]
    /*     d => { switch (d.properties.SP_CODE){
         case:"acer-fre": 
         colors[0]; break;
@@ -128,9 +128,7 @@ function App() {
       } 
     },*/
     // [255, 0, 0],
-     
-   
-
+ 
 
 })
 
