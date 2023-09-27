@@ -4,18 +4,21 @@ import DeckGL from 'deck.gl';
 import {LineLayer, ScatterplotLayer} from '@deck.gl/layers';
 import {Map, StaticMap, MapContext, NavigationControl} from 'react-map-gl';
 
-
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './index.css';
+//import mapboxgl from '!mapbox-gl';
 
 import  data  from './ontario_place_tree_species.json';
 
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjBzYnY3eDFzb24yc3F2OW1hZ3V2YWoifQ.pelghd1_gDY9DeAYv3rrAw';
-const DATA_URL ="./ontario_place_tree_species.geojson";
-const  dataTrees = require("./ontario_place_tree_species.json");// customData;
+//const DATA_URL ="./ontario_place_tree_species.geojson";
+//const  dataTrees = require("./ontario_place_tree_species.json");// customData;
 console.log(data)
-console.log(dataTrees)
+//console.log(dataTrees)
 
 let treeTypes 
    let treeArray = [];
@@ -36,14 +39,16 @@ let treeTypes
       console.log(treeTypes);
      // console.log(ptType);
 
-let colors = [
-  [0,0,0],  [240,240,240] //black and white for special cases
+let colors = [[240,240,240] , [255,22,0] 
+  [0,0,0],  //black and white for special cases
 ]
 
 for (let i = colors.length-1; i < treeTypes.length -1; i++ )
   {
     colors.push([Math.random()*255, Math.random()*255, Math.random()*255 ]);
   }
+
+  colors[13] = [250,245,240] 
   console.log(colors);
 
 
