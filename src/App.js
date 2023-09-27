@@ -39,13 +39,13 @@ let treeTypes
       console.log(treeTypes);
      // console.log(ptType);
 
-let colors = [[240,240,240] , [255,22,0] 
+let colors = [[240,240,240, 100] , [255,22,0, 100] 
   [0,0,0],  //black and white for special cases
 ]
 
 for (let i = colors.length-1; i < treeTypes.length -1; i++ )
   {
-    colors.push([Math.random()*255, Math.random()*255, Math.random()*255 ]);
+    colors.push([Math.random()*255, Math.random()*255, Math.random()*255, 200 ]);
   }
 
   colors[13] = [250,245,240] 
@@ -87,8 +87,8 @@ function App() {
      ,
  
       getPosition:  d => d.geometry.coordinates,
-      getRadius:   d => d.properties.CrownRad,
-      getFillColor: d =>  d.properties.SP_CODE? colors[treeTypes.indexOf(d.properties.SP_CODE)] : colors[1]
+      getRadius:   d => (d.properties.CrownRad + 2),
+      getFillColor: d =>  d.properties.SP_CODE? colors[treeTypes.indexOf(d.properties.SP_CODE)] : colors[0]
    /*     d => { switch (d.properties.SP_CODE){
         case:"acer-fre": 
         colors[0]; break;
