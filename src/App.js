@@ -83,7 +83,7 @@ function App() {
  
       getPosition:  d => d.geometry.coordinates,
       getRadius:   d => d.properties.CrownRad,
-      getFillColor: d =>  d.properties.SP_CODE? colors[treeTypes.indexOf(d.properties.SP_CODE.toString())] : colors[1]
+      getFillColor: d =>  d.properties.SP_CODE? colors[treeTypes.indexOf(d.properties.SP_CODE)] : colors[1]
    /*     d => { switch (d.properties.SP_CODE){
         case:"acer-fre": 
         colors[0]; break;
