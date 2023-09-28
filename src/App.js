@@ -6,7 +6,6 @@ import {Map, StaticMap, MapContext, NavigationControl} from 'react-map-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './index.css';
-//import mapboxgl from '!mapbox-gl';
 
 import  data  from './ontario_place_tree_species.json';
 
@@ -15,12 +14,10 @@ import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 
 
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjBzYnY3eDFzb24yc3F2OW1hZ3V2YWoifQ.pelghd1_gDY9DeAYv3rrAw';
-//const DATA_URL ="./ontario_place_tree_species.geojson";
 //const  dataTrees = require("./ontario_place_tree_species.json");// customData;
-console.log(data)
-//console.log(dataTrees)
 
-let treeTypes 
+// sort data
+  let treeTypes 
    let treeArray = [];
    let ptType    = [];
    let ptArray    = [];
@@ -31,16 +28,17 @@ let treeTypes
       treeArray.push( data.features[i].properties.SP_CODE)
       ptArray.push( data.features[i].geometry.type)
    }
+   console.log(treeArray);
+
    treeTypes = treeArray.filter((item,
     index) => treeArray.indexOf(item) === index);
     ptType = ptArray.filter((item,
       index) => ptArray.indexOf(item) === index);
   
       console.log(treeTypes);
-     // console.log(ptType);
 
-let colors = [[240,240,240, 100] , [255,22,0, 100] 
-  [0,0,0],  //black and white for special cases
+let colors = [[240,240,240, 100] , [255,22,0, 100] ,
+  [0, 0, 0, 255],  //black and white for special cases
 ]
 
 for (let i = colors.length-1; i < treeTypes.length -1; i++ )
@@ -52,11 +50,14 @@ for (let i = colors.length-1; i < treeTypes.length -1; i++ )
   console.log(colors);
 
 
+  // tooltip
+
+
 // Viewport settings
 const INITIAL_VIEW_STATE = {
-  longitude: -79.418,  //-122.41669,
+  longitude: -79.42,  //-122.41669,
   latitude: 43.628077, //37.7853,
-  zoom: 17,
+  zoom: 17.25,
   pitch: 0,
   bearing: 0
 };
@@ -74,85 +75,65 @@ const INITIAL_VIEW_STATE = {
 
 function App() {
 
+ const [hoverInfo, setHoverInfo] = useState(false);
+
   //fetchData();
   const layers = [
  //   new LineLayer({id: 'line-layer', datatest}), 
 
     new ScatterplotLayer({
       id: "trees",
-      data: data.features
-     //   size: data.properties.CrownRad,
-        
-     //   species: data.properties.SP_CODE, 
-     ,
- 
+      data: data.features, /* [{position:  data.geometry.coordinates, 
+      radius: data.properties.CrownRad, 
+      specie: data.properties.SP_CODE}
+      ]
+       */
+      
       getPosition:  d => d.geometry.coordinates,
-      getRadius:   d => (d.properties.CrownRad + 2),
-      getFillColor: d =>  d.properties.SP_CODE? colors[treeTypes.indexOf(d.properties.SP_CODE)] : colors[0]
-   /*     d => { switch (d.properties.SP_CODE){
-        case:"acer-fre": 
-        colors[0]; break;
-        case:"rhus-typ": 
-        colors[1]; break;
-        case:"pice-omo": 
-        colors[2]; break;
-        case:"DEAD": 
-        colors[3]; break;
-        case:"aila-alt": 
-        colors[4]; break;
-        case:"gled-tri": 
-        colors[5]; break;
-        case:"frax-exc": 
-        colors[6]; break;
-        case:"pice-gla": 
-        colors[7]; break;
-        case:"alnu-glu": 
-        colors[8]; break;
-        case:"frax-pen": 
-        colors[9]; break;
-        colors[0]; break;
-        case:"rhus-typ": 
-        colors[1]; break;
-        case:"pice-omo": 
-        colors[2]; break;
-        case:"DEAD": 
-        colors[3]; break;
-        case:"aila-alt": 
-        colors[4]; break;
-        case:"gled-tri": 
-        colors[5]; break;
-        case:"frax-exc": 
-        colors[6]; break;
-        case:"pice-gla": 
-        colors[7]; break;
-        case:"alnu-glu": 
-        colors[8]; break;
-        case:"frax-pen": 
-        colors[9]; break;
+      getRadius:   d => (d.properties.CrownRad + 1),
+      getFillColor: d =>  d.properties.SP_CODE? colors[treeTypes.indexOf(d.properties.SP_CODE)] : colors[0],
+      pickable: true,
+      onHover: d =>{ d.object ?  console.log( d.object.properties ) :  console.log(d);
+        d.object?  setHoverInfo(d) :  console.log(d) ; 
+      }
+       
         
-      } 
-    },*/
-    // [255, 0, 0],
- 
 
 })
-
-
 
   ];
 
   return (
+    <div><button className="btn"  > Adopt a Tree </button>
+
       <DeckGL
     initialViewState={INITIAL_VIEW_STATE}
     controller={true}
     layers={layers} 
-    >
+  /*  getTooltip = {({object}) => object && object.message}
+  */    >
+     {hoverInfo.object && (
+        <div className="infoBox" style={{   /* left: hoverInfo.x, top: hoverInfo.y */ }}>
+          <h2> { hoverInfo.object.properties.SP_CODE }</h2>
+        <p> {/*   age: { Date(+hoverInfo.object.properties.CreationDate * 1000)}   */}
+         
+         <br/>Canopy: { hoverInfo.object.properties.CANOPYW !== 0? " " + hoverInfo.object.properties.CANOPYW + "m "  : "" }
+         <br/> Crown radius: { hoverInfo.object.properties.CrownRad !== 0? " " + hoverInfo.object.properties.CrownRad + "m   "  : "" }
+         <br/>  Height: { hoverInfo.object.properties.HTOTAL !== 0 ||  hoverInfo.object.properties.HTOTAL !== "0"? " "  + hoverInfo.object.properties.HTOTAL + "m "  : "" }
+          <br/> <i>planted the  { Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(+hoverInfo.object.properties.INW_DATE)) }</i><br/>
+         <br/> { hoverInfo.object.properties.Cultivar !== "" && hoverInfo.object.properties.Cultivar !== null? " by " + hoverInfo.object.properties.Cultivar  : "" }
+        <br/><i>   { hoverInfo.object.properties.Creator !="" ||  hoverInfo.object.properties.Creator !="null"? "listed by " + hoverInfo.object.properties.Creator: ""} 
+          <br/> the {  Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(+hoverInfo.object.properties.CreationDate)) } </i>
+          </p>
+        </div>
+      )}{  /* */ }
+
           <Map 
           mapboxAccessToken={MAPBOX_ACCESS_TOKEN} 
           mapStyle="mapbox://styles/mapbox/light-v11"
           />
 </DeckGL>   
- 
+ </div>
   );
 }
 

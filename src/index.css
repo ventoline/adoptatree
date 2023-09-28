@@ -12,3 +12,66 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.btn{
+
+  z-index:100;
+  position:absolute;
+  top:0;
+  right:0;
+  padding:5px;
+  margin:20px;
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 150%;
+    height: 66px;
+    line-height: 1.15;
+    outline: none;
+    overflow: hidden;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 200px;
+  }
+  
+  .btn:disabled {
+    cursor: default;
+  }
+  
+  .btn:focus {
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+  }
+
+
+  .infoBox{
+    padding:0px  10px 0px ;
+    margin:20px;
+    width: 200px;
+    background-color: rgba(25, 25, 25, .8);
+    color: rgb(201, 201, 201);
+    position: absolute;
+    border-radius: 5px; 
+    top: 0;
+    left:0;
+    z-index: 50;
+  }
+
+    h2 {
+      margin-top: 5px; 
+      margin-bottom: -10px; 
+      font-size: 40px;
+      font-size-adjust: inherit;
+    }

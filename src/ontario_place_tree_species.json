@@ -1226,7 +1226,7 @@
         "ID_BLOCK" : "OP", 
         "LOCATION" : "ut", 
         "SP_CODE" : "pice-pun", 
-        "Cultivar" : null, 
+        "Cultivar" : "null", 
         "STEMNO" : 1, 
         "DBH" : 23, 
         "SURF_H" : 0, 
