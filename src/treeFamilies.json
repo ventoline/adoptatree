@@ -1,0 +1,554 @@
+{
+   
+    "TreeFamilies" : [
+      {
+        "SP_CODE" : "aila-alt", 
+        "full-name" : "Ailanthus altissima", 
+        "common-name": "Tree of Heaven",
+        "family" : "Simaroubaceae"
+      
+    },
+
+
+    {
+        "SP_CODE" : "pice-omo", 
+        "full-name" : "Picea Omrika", 
+        "common-name": "Serbian Spruce",
+        "family" : "Spruce"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "DEAD", 
+        "full-name" : "Dead tree", 
+        "common-name": "",
+        "family" : "miscellaneous"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "tili-cor", 
+        "full-name" : "Tilia cordata", 
+        "common-name": "Little-Leaf Linden",
+        "family" : "Malvaceae"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "acer-fre", 
+        "full-name" : "Acer x Freemanii", 
+        "common-name": "Hybrid Red Maple",
+        "family" : "Maple"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "rhus-typ", 
+        "full-name" : "Rhus typhina", 
+        "common-name": "Staghorn Sumac",
+        "family" : "Anacardiaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "gled-tri", 
+        "full-name" : "Gleditsia triacanthos", 
+        "common-name": "Thorny honey Locust",
+        "family" : "Fabaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "frax-exc", 
+        "full-name" : "Fraxinus excelsior", 
+        "common-name": "COMMON ASH",
+        "family" : "Ash"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "pice-gla", 
+        "full-name" : "Picea glauca ", 
+        "common-name": "white Spruce ",
+        "family" : "Spruce"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "alnu-glu", 
+        "full-name" : "Alnus glutinosa", 
+        "common-name": "common alder",
+        "family" : "Alder"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "frax-pen", 
+        "full-name" : "Fraxinus Pennsylvanica", 
+        "common-name": "Green Ash",
+        "family" : "Ash"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "frax-ame", 
+        "full-name" : "Fraxinus Americana", 
+        "common-name": "White Ash",
+        "family" : "Ash"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "pice-pun", 
+        "full-name" : "Picea Pungens ", 
+        "common-name": "Colorado Spruce ",
+        "family" : "Spruce"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "amel-can", 
+        "full-name" : "Amelanchier Canadensis", 
+        "common-name": "Service Berry",
+        "family" : "Rosaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "thuj-occ", 
+        "full-name" : "Thuja Occidentalis", 
+        "common-name": "Northern White Cedar",
+        "family" : "Cypress"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "pice-abi", 
+        "full-name" : "Picea abies", 
+        "common-name": "Norway Spruce",
+        "family" : "Spruce"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "quer-rub", 
+        "full-name" : "Quercus rubra", 
+        "common-name": "Scarlet Oak",
+        "family" : "Oak"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "acer-pla", 
+        "full-name" : "Acer Platanoides ", 
+        "common-name": "Norway Maple",
+        "family" : "Maple"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "acer-das", 
+        "full-name" : "Acer Davidii", 
+        "common-name": "Père David's Maple",
+        "family" : "Maple"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "sali-bab", 
+        "full-name" : "Salix babylonica", 
+        "common-name": "Weeping Willow",
+        "family" : "Willow"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "robi-pse", 
+        "full-name" : "Robinia pseudoacacia", 
+        "common-name": "Black locust",
+        "family" : "Fabaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "ulmu-pum", 
+        "full-name" : "Ulmus pumila", 
+        "common-name": "Siberian Elm",
+        "family" : "Elm"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "abie-sp", 
+        "full-name" : "Fir", 
+        "common-name": "Fir",
+        "family" : "Fir"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "betu-pap", 
+        "full-name" : "Betula Papyrifera", 
+        "common-name": "White Birch",
+        "family" : "Birch"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "acer-sac", 
+        "full-name" : "Acer Saccharinum ", 
+        "common-name": "Silver Maple ",
+        "family" : "Maple"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "moru-alb", 
+        "full-name" : "Morus", 
+        "common-name": "white Mulberry",
+        "family" : "Moraceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "ulmu-mog", 
+        "full-name" : "Ulmus Mog", 
+        "common-name": "",
+        "family" : "Elm"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "cerc-jap", 
+        "full-name" : "Cercidiphyllum Japonicum", 
+        "common-name": "Katsura",
+        "family" : "Cercidiphyllaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "gymn-dio", 
+        "full-name" : "Gymnocladus Dioicus", 
+        "common-name": "Kentucky Coffee Tree",
+        "family" : "Fabaceae "
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "acer-rub", 
+        "full-name" : "Acer Rubrum", 
+        "common-name": "Red Maple",
+        "family" : "Maple"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "malu-dom", 
+        "full-name" : "Malus Domestica", 
+        "common-name": "Apple Tree",
+        "family" : "Rosaceae"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "ulmu-ame", 
+        "full-name" : "Ulmus Americana", 
+        "common-name": "White Elm ",
+        "family" : "Elm"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "syri-vul", 
+        "full-name" : "Syringa Vulgaris ", 
+        "common-name": "Common Lilac",
+        "family" : "Oleaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "pinu-nig", 
+        "full-name" : "Pinus Nigra", 
+        "common-name": "Austrian Pine",
+        "family" : "Pine"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "ulmu-hol", 
+        "full-name" : "Ulmus Hollandica ", 
+        "common-name": "Dutch Elm",
+        "family" : "Elm"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "cata-spe", 
+        "full-name" : "Catalpa Speciosa ", 
+        "common-name": "cigar Tree",
+        "family" : "Bignonia"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "betu-nig", 
+        "full-name" : "Betula Nigra", 
+        "common-name": "River Birch",
+        "family" : "Birch"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "malu-hyb", 
+        "full-name" : "Malus Hybrid", 
+        "common-name": "Crabapples",
+        "family" : "Rosaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "ulmu-sp", 
+        "full-name" : "Ulmus unidentified", 
+        "common-name": "Elm",
+        "family" : "Elm"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "rham-cat", 
+        "full-name" : "Rhamnus Cathartica", 
+        "common-name": "European Buckthorn",
+        "family" : "Rhamnaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "ulmu-gla", 
+        "full-name" : "Ulmus Glabra", 
+        "common-name": "Wych Elm",
+        "family" : "Elm"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "acer-neg", 
+        "full-name" : "Acer Negundo", 
+        "common-name": "Manitoba Maple (Boxelder)",
+        "family" : "Maple"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "tili-cor", 
+        "full-name" : "Tilia cordata", 
+        "common-name": "Small Leaved Linden",
+        "family" : "Malvaceae"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "popu-del", 
+        "full-name" : "Populus Deltoides ", 
+        "common-name": "Eastern Cottonwood ",
+        "family" : "Poplar"
+      
+    },
+
+
+
+    {
+        "SP_CODE" : "elae-ang", 
+        "full-name" : "Elaeagnus Angustifolia", 
+        "common-name": "Silver Berry",
+        "family" : "Elaeagnaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "crat-sp", 
+        "full-name" : "Crataegus spp. ", 
+        "common-name": "Hawthorn",
+        "family" : "Rosaceae"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "sali-sp", 
+        "full-name" : "Salix spp.", 
+        "common-name": "Willow",
+        "family" : "Willow"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "loni-tat", 
+        "full-name" : "Loni", 
+        "common-name": "loni",
+        "family" : ""
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "popu-tre", 
+        "full-name" : "Populus Tremuloides", 
+        "common-name": "Trembling Aspen",
+        "family" : "Poplar"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "lari-dec", 
+        "full-name" : "Larix Decidua", 
+        "common-name": "European Larch",
+        "family" : "Pine"
+      
+    },
+
+
+
+
+    {
+        "SP_CODE" : "sali-alb", 
+        "full-name" :"Salix alba var. vitellina",
+        "common-name":  "Weeping Willow", 
+        "family" : "Willow"
+      
+    }
+
+
+
+
+
+
+
+]
+}

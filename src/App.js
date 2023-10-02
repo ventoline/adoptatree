@@ -3,11 +3,13 @@ import React, { useRef, useEffect, useState } from 'react';
 import DeckGL from 'deck.gl';
 import {LineLayer, ScatterplotLayer} from '@deck.gl/layers';
 import {Map, StaticMap, MapContext, NavigationControl} from 'react-map-gl';
+import {DataFilterExtension} from '@deck.gl/extensions';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './index.css';
 
 import  data  from './ontario_place_tree_species.json';
+import  dataFam  from './treeFamilies.json';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
@@ -22,13 +24,15 @@ const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjBzYnY3eDFzb24y
    let ptType    = [];
    let ptArray    = [];
 
+   let treeFamilies = []
+
   for (let i = 0; i < data.features.length; i++ )
   {
    // if(i ==0){
       treeArray.push( data.features[i].properties.SP_CODE)
       ptArray.push( data.features[i].geometry.type)
    }
-   console.log(treeArray);
+  // console.log(treeArray);
 
    treeTypes = treeArray.filter((item,
     index) => treeArray.indexOf(item) === index);
@@ -37,8 +41,27 @@ const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjBzYnY3eDFzb24y
   
       console.log(treeTypes);
 
-let colors = [[240,240,240, 100] , [255,22,0, 100] ,
-  [0, 0, 0, 255],  //black and white for special cases
+
+      for (let i = 0; i < dataFam.TreeFamilies.length; i++ )
+  {
+   // if(i ==0){
+    let tree = {
+      SP_CODE: dataFam.TreeFamilies[i].SP_CODE,
+      name : dataFam.TreeFamilies[i]['full-name'],
+      commonName : dataFam.TreeFamilies[i]['common-name'],
+      family : dataFam.TreeFamilies[i]['family'],
+
+    }
+    treeFamilies.push( tree)
+     // ptArray.push( data.features[i].geometry.type)
+   }
+   console.log(treeFamilies)
+
+
+      //colors for icons
+
+let colors = [[240,240,240] , [255,22,0] ,
+  [0, 0, 0],  //black and white for special cases
 ]
 
 for (let i = colors.length-1; i < treeTypes.length -1; i++ )
@@ -89,12 +112,18 @@ function App() {
       ]
        */
       
-      getPosition:  d => d.geometry.coordinates,
+      getPosition:  d => d.geometry.coordinates ,
       getRadius:   d => (d.properties.CrownRad + 1),
-      getFillColor: d =>  d.properties.SP_CODE? colors[treeTypes.indexOf(d.properties.SP_CODE)] : colors[0],
-      pickable: true,
-      onHover: d =>{ d.object ?  console.log( d.object.properties ) :  console.log(d);
-        d.object?  setHoverInfo(d) :  console.log(d) ; 
+      getFillColor:  d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? colors[treeTypes.indexOf(d.properties.SP_CODE)] : [0,0,0,0] ,
+      //opacity: d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? 100:0,
+      // d.geometry.coordinates[1]? Math.floor( d.geometry.coordinates[1]/10)/10 : 1,
+     // getFilterValue: f => f.properties.coordinates,  
+     // filterRange: [[-79.4, 43.6], [-79.42, 43.6293]], 
+      //extensions: [new DataFilterExtension({filterSize: 1})],
+      pickable:  true, //d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? true : false ,
+      onHover: d =>{ 
+        d.object ?   console.log( d.object.geometry.coordinates[1]  /**/ ) :  console.log(d);
+        d.object && (d.object.geometry.coordinates[1] < 43.6293  &&  d.object.geometry.coordinates[0] < -79.418)?  setHoverInfo(d) :   console.log( "out of range "+ d); ; 
       }
        
         
@@ -104,7 +133,7 @@ function App() {
   ];
 
   return (
-    <div><button className="btn"  > Adopt a Tree </button>
+    <div><button className="btn mainBtn"  > Find out more </button>
 
       <DeckGL
     initialViewState={INITIAL_VIEW_STATE}
@@ -114,17 +143,32 @@ function App() {
   */    >
      {hoverInfo.object && (
         <div className="infoBox" style={{   /* left: hoverInfo.x, top: hoverInfo.y */ }}>
-          <h2> { hoverInfo.object.properties.SP_CODE }</h2>
-        <p> {/*   age: { Date(+hoverInfo.object.properties.CreationDate * 1000)}   */}
+          <h2> { }</h2>
+          <h2> { treeFamilies.find((obj) => obj.SP_CODE  === hoverInfo.object.properties.SP_CODE).commonName}</h2>
+          <p ><span id="tree-family"> { treeFamilies.find((obj) => obj.SP_CODE  === hoverInfo.object.properties.SP_CODE).name }
+           <br/> ({ treeFamilies.find((obj) => obj.SP_CODE  === hoverInfo.object.properties.SP_CODE).family} family)</span>
          
-         <br/>Canopy: { hoverInfo.object.properties.CANOPYW !== 0? " " + hoverInfo.object.properties.CANOPYW + "m "  : "" }
-         <br/> Crown radius: { hoverInfo.object.properties.CrownRad !== 0? " " + hoverInfo.object.properties.CrownRad + "m   "  : "" }
-         <br/>  Height: { hoverInfo.object.properties.HTOTAL !== 0 ||  hoverInfo.object.properties.HTOTAL !== "0"? " "  + hoverInfo.object.properties.HTOTAL + "m "  : "" }
-          <br/> <i>planted the  { Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(+hoverInfo.object.properties.INW_DATE)) }</i><br/>
+           <br/>  <br/>Canopy: { hoverInfo.object.properties.CANOPYW !== 0? " " + hoverInfo.object.properties.CANOPYW + "m "  : "" }
+         <br/>Crown radius: { hoverInfo.object.properties.CrownRad !== 0? " " + hoverInfo.object.properties.CrownRad + "m   "  : "" }
+         <br/>Height: { hoverInfo.object.properties.HTOTAL !== 0 ? " "  + hoverInfo.object.properties.HTOTAL + "m "  : "" } 
+         <br/>Diameter: { hoverInfo.object.properties.DBH !== 0 ? " "  + hoverInfo.object.properties.DBH + "'' "  : "" } 
+       {/*    <br/> <i>planted the  { Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(+hoverInfo.object.properties.INW_DATE)) }</i><br/>
+      */} 
          <br/> { hoverInfo.object.properties.Cultivar !== "" && hoverInfo.object.properties.Cultivar !== null? " by " + hoverInfo.object.properties.Cultivar  : "" }
-        <br/><i>   { hoverInfo.object.properties.Creator !="" ||  hoverInfo.object.properties.Creator !="null"? "listed by " + hoverInfo.object.properties.Creator: ""} 
-          <br/> the {  Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(+hoverInfo.object.properties.CreationDate)) } </i>
+        <br/><i id="sideNote">   { hoverInfo.object.properties.Creator !="" ||  hoverInfo.object.properties.Creator !="null"? "listed by " + hoverInfo.object.properties.Creator + " ": " "} 
+         the {  Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(+hoverInfo.object.properties.CreationDate)) } </i>
           </p>
+
+          { hoverInfo.object.properties.SP_CODE !== "DEAD" && (
+
+          <button className="btn"> 
+          { (treeFamilies.find((obj) => obj.SP_CODE  === hoverInfo.object.properties.SP_CODE).family === "Ash" ) ||
+          (treeFamilies.find((obj) => obj.SP_CODE  === hoverInfo.object.properties.SP_CODE).family === "Elm" )
+           ?  "Adopt an ": "Adopt a " }
+        
+          { treeFamilies.find((obj) => obj.SP_CODE  === hoverInfo.object.properties.SP_CODE).family} </button>
+
+)}
         </div>
       )}{  /* */ }
 

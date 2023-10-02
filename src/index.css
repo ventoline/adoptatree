@@ -13,15 +13,17 @@ code {
     monospace;
 }
 
-
-.btn{
-
-  z-index:100;
+.mainBtn{  z-index:100;
   position:absolute;
   top:0;
   right:0;
   padding:5px;
   margin:20px;
+}
+
+.btn{
+
+
     appearance: button;
     backface-visibility: hidden;
     background-color: #405cf5;
@@ -57,9 +59,9 @@ code {
 
 
   .infoBox{
-    padding:0px  10px 0px ;
+    padding:0px  20px 20px ;
     margin:20px;
-    width: 200px;
+    width: 230px;
     background-color: rgba(25, 25, 25, .8);
     color: rgb(201, 201, 201);
     position: absolute;
@@ -70,8 +72,19 @@ code {
   }
 
     h2 {
-      margin-top: 5px; 
+      margin-top: 20px; 
       margin-bottom: -10px; 
-      font-size: 40px;
+      line-height: 90%;
+      font-size: 30px;
       font-size-adjust: inherit;
+    }
+
+    #tree-family{
+font-family : "serif";
+font-style  : italic;
+
+    }
+
+    #sideNote{
+      font-size: smaller;
     }
