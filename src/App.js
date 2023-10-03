@@ -144,7 +144,12 @@ function App() {
       getPosition:  d => d.geometry.coordinates ,
       getRadius:   d => (d.properties.CrownRad + 1),
       getFillColor:  d => ((d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418) && d.properties.SP_CODE !== "DEAD" )? 
-      colors[treeTypes.indexOf(d.properties.SP_CODE)] : [0,0,0,0] ,
+     [ colors[treeTypes.indexOf(d.properties.SP_CODE)][0],colors[treeTypes.indexOf(d.properties.SP_CODE)][1],colors[treeTypes.indexOf(d.properties.SP_CODE)][2],
+     (selectedOption === "all") || (selectedOption === treeFamilies.find((el) => el.SP_CODE === d.properties.SP_CODE).family) ?  220: 20] 
+         : [0,0,0,0] ,
+         updateTriggers: {
+          getFillColor: [selectedOption]
+      },
       //opacity: d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? 100:0,
       // d.geometry.coordinates[1]? Math.floor( d.geometry.coordinates[1]/10)/10 : 1,
      // getFilterValue: f => f.properties.coordinates,  
@@ -152,8 +157,9 @@ function App() {
       //extensions: [new DataFilterExtension({filterSize: 1})],
       pickable:  true, //d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? true : false ,
       onHover: d =>{ 
-        d.object ?   console.log( d.object.geometry.coordinates[1]  /**/ ) :  console.log(d);
-        d.object && (d.object.geometry.coordinates[1] < 43.6293  &&  d.object.geometry.coordinates[0] < -79.418) && d.object.properties.SP_CODE !== "DEAD"?  setHoverInfo(d) :   console.log( "out of range "+ d); ; 
+        d.object ?    console.log( treeFamilies.find((el) => el.SP_CODE === d.object.properties.SP_CODE).family  )  :  console.log(d);
+        d.object && (d.object.geometry.coordinates[1] < 43.6293  &&  d.object.geometry.coordinates[0] < -79.418) && d.object.properties.SP_CODE !== "DEAD"?  
+        setHoverInfo(d) :   console.log( "out of range "+ d); 
       }
         
 
@@ -209,10 +215,10 @@ function App() {
           mapboxAccessToken={MAPBOX_ACCESS_TOKEN} 
           mapStyle="mapbox://styles/mapbox/light-v11"
           />
-
-          <div className="tree-selector" onChange={handleChange}  > <p>Select a tree specie</p>
+</DeckGL> 
+          <div className="tree-selector" onChange={handleChange}  > <p>Select a tree Family</p>
           <ul>
-            <li  key="all"><input type="radio" value="all" name="all" checked= {selectedOption === "all"}   onChange={console.log("changed")}
+            <li  key="all"><input type="radio" value="all" name="all" onChange={console.log("changed")} checked= {selectedOption === "all"}   readOnly 
 ></input>All
 </li>
           {treeFamValid.map((treeFamValid, index) =>
@@ -221,7 +227,7 @@ function App() {
   <input type="radio" value={treeFamValid}  
     onChange={console.log("changed " + selectedOption)}
 checked={selectedOption === treeFamValid } 
-  name={treeFamValid}>
+  name={treeFamValid} readOnly >
 
   </input>
 {treeFamValid}
@@ -231,7 +237,7 @@ checked={selectedOption === treeFamValid }
             </ul>
             
             </div>
-</DeckGL>   
+  {/*  */}
  </div>
   );
 }
