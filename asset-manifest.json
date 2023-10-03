@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/adoptatree/static/css/main.a49ecf4a.css",
-    "main.js": "/adoptatree/static/js/main.cef4a14e.js",
-    "static/js/483.255195ee.chunk.js": "/adoptatree/static/js/483.255195ee.chunk.js",
+    "main.css": "/adoptatree/static/css/main.d91a53c9.css",
+    "main.js": "/adoptatree/static/js/main.6ed8eb98.js",
+    "static/js/483.3ac7e81f.chunk.js": "/adoptatree/static/js/483.3ac7e81f.chunk.js",
     "static/js/787.530bb486.chunk.js": "/adoptatree/static/js/787.530bb486.chunk.js",
     "static/js/mapbox-gl-csp-worker.59ad5184.worker.js": "/adoptatree/static/js/mapbox-gl-csp-worker.59ad5184.worker.js",
     "index.html": "/adoptatree/index.html",
-    "main.a49ecf4a.css.map": "/adoptatree/static/css/main.a49ecf4a.css.map",
-    "main.cef4a14e.js.map": "/adoptatree/static/js/main.cef4a14e.js.map",
-    "483.255195ee.chunk.js.map": "/adoptatree/static/js/483.255195ee.chunk.js.map",
+    "main.d91a53c9.css.map": "/adoptatree/static/css/main.d91a53c9.css.map",
+    "main.6ed8eb98.js.map": "/adoptatree/static/js/main.6ed8eb98.js.map",
+    "483.3ac7e81f.chunk.js.map": "/adoptatree/static/js/483.3ac7e81f.chunk.js.map",
     "787.530bb486.chunk.js.map": "/adoptatree/static/js/787.530bb486.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a49ecf4a.css",
-    "static/js/main.cef4a14e.js"
+    "static/css/main.d91a53c9.css",
+    "static/js/main.6ed8eb98.js"
   ]
 }
