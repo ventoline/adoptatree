@@ -19,27 +19,59 @@ const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjBzYnY3eDFzb24y
 //const  dataTrees = require("./ontario_place_tree_species.json");// customData;
 
 // sort data
-  let treeTypes 
+let   treeTypes  = [];
    let treeArray = [];
    let ptType    = [];
-   let ptArray    = [];
+   let ptArray   = [];
 
    let treeFamilies = []
+   let treeValid = []
+   let treeFamValid = []
+   let temp = []
 
   for (let i = 0; i < data.features.length; i++ )
   {
    // if(i ==0){
       treeArray.push( data.features[i].properties.SP_CODE)
       ptArray.push( data.features[i].geometry.type)
+
+      //add only tree not dead and on the west island 
+      if( (data.features[i].properties.SP_CODE!== "DEAD") && (data.features[i].geometry.coordinates[0] < -79.418) && (data.features[i].geometry.coordinates[1] < 43.6293 )  )
+      {
+        treeValid.push( data.features[i].properties.SP_CODE)
+        for (let j = 0; j < dataFam.TreeFamilies.length; j++){
+          if( dataFam.TreeFamilies[j].SP_CODE ===  data.features[i].properties.SP_CODE )
+          {        temp.push(dataFam.TreeFamilies[j].family)
+          //  console.log(dataFam.TreeFamilies[j].SP_CODE)
+            // console.log(dataFam.TreeFamilies[j].family)
+            break;
+}
+
+        }
+      }
+
+
    }
   // console.log(treeArray);
 
-   treeTypes = treeArray.filter((item,
-    index) => treeArray.indexOf(item) === index);
-    ptType = ptArray.filter((item,
-      index) => ptArray.indexOf(item) === index);
+   treeTypes = treeArray.filter((item, index) => treeArray.indexOf(item) === index);
+    ptType = ptArray.filter((item,  index) => ptArray.indexOf(item) === index);
   
       console.log(treeTypes);
+
+      treeValid = treeValid.filter((item,
+        index) => treeValid.indexOf(item) === index);
+      
+      
+        treeFamValid = temp.filter((item,
+          index) => temp.indexOf(item) === index);
+        
+        
+        console.log("treeValid");
+        console.log(treeValid);
+        console.log("treeFamValid");
+        console.log(treeFamValid);
+
 
 
       for (let i = 0; i < dataFam.TreeFamilies.length; i++ )
@@ -55,10 +87,10 @@ const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjBzYnY3eDFzb24y
     treeFamilies.push( tree)
      // ptArray.push( data.features[i].geometry.type)
    }
+
    console.log(treeFamilies)
 
-
-      //colors for icons
+   //colors for icons_______________________________________________________________
 
 let colors = [[240,240,240] , [255,22,0] ,
   [0, 0, 0],  //black and white for special cases
@@ -70,7 +102,7 @@ for (let i = colors.length-1; i < treeTypes.length -1; i++ )
   }
 
   colors[13] = [250,245,240] 
-  console.log(colors);
+  //console.log(colors);
 
 
   // tooltip
@@ -87,22 +119,20 @@ const INITIAL_VIEW_STATE = {
 
 
 
-/* async function fetchData() {
-  const dataImp = await import('./ontario_place_tree_species.json');
-  console.log( typeof dataImp);
-  //console.log(  dataImp.features[0].properties.CrownRad);
-  //console.log(  JSON.stringify(dataImp));
-}
- */
-
-
 function App() {
+  const [selectedOption, setSelectedOption] = useState('all');
+
+  function handleChange(event) {
+    setSelectedOption(event.target.value);
+    console.log(event.target.value);
+
+  }
+
 
  const [hoverInfo, setHoverInfo] = useState(false);
+ 
 
-  //fetchData();
   const layers = [
- //   new LineLayer({id: 'line-layer', datatest}), 
 
     new ScatterplotLayer({
       id: "trees",
@@ -110,11 +140,11 @@ function App() {
       radius: data.properties.CrownRad, 
       specie: data.properties.SP_CODE}
       ]
-       */
-      
+       */ 
       getPosition:  d => d.geometry.coordinates ,
       getRadius:   d => (d.properties.CrownRad + 1),
-      getFillColor:  d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? colors[treeTypes.indexOf(d.properties.SP_CODE)] : [0,0,0,0] ,
+      getFillColor:  d => ((d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418) && d.properties.SP_CODE !== "DEAD" )? 
+      colors[treeTypes.indexOf(d.properties.SP_CODE)] : [0,0,0,0] ,
       //opacity: d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? 100:0,
       // d.geometry.coordinates[1]? Math.floor( d.geometry.coordinates[1]/10)/10 : 1,
      // getFilterValue: f => f.properties.coordinates,  
@@ -123,9 +153,8 @@ function App() {
       pickable:  true, //d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? true : false ,
       onHover: d =>{ 
         d.object ?   console.log( d.object.geometry.coordinates[1]  /**/ ) :  console.log(d);
-        d.object && (d.object.geometry.coordinates[1] < 43.6293  &&  d.object.geometry.coordinates[0] < -79.418)?  setHoverInfo(d) :   console.log( "out of range "+ d); ; 
+        d.object && (d.object.geometry.coordinates[1] < 43.6293  &&  d.object.geometry.coordinates[0] < -79.418) && d.object.properties.SP_CODE !== "DEAD"?  setHoverInfo(d) :   console.log( "out of range "+ d); ; 
       }
-       
         
 
 })
@@ -138,9 +167,12 @@ function App() {
       <DeckGL
     initialViewState={INITIAL_VIEW_STATE}
     controller={true}
-    layers={layers} 
+    layers={layers}
   /*  getTooltip = {({object}) => object && object.message}
   */    >
+
+
+
      {hoverInfo.object && (
         <div className="infoBox" style={{   /* left: hoverInfo.x, top: hoverInfo.y */ }}>
           <h2> { }</h2>
@@ -148,10 +180,11 @@ function App() {
           <p ><span id="tree-family"> { treeFamilies.find((obj) => obj.SP_CODE  === hoverInfo.object.properties.SP_CODE).name }
            <br/> ({ treeFamilies.find((obj) => obj.SP_CODE  === hoverInfo.object.properties.SP_CODE).family} family)</span>
          
-           <br/>  <br/>Canopy: { hoverInfo.object.properties.CANOPYW !== 0? " " + hoverInfo.object.properties.CANOPYW + "m "  : "" }
-         <br/>Crown radius: { hoverInfo.object.properties.CrownRad !== 0? " " + hoverInfo.object.properties.CrownRad + "m   "  : "" }
-         <br/>Height: { hoverInfo.object.properties.HTOTAL !== 0 ? " "  + hoverInfo.object.properties.HTOTAL + "m "  : "" } 
-         <br/>Diameter: { hoverInfo.object.properties.DBH !== 0 ? " "  + hoverInfo.object.properties.DBH + "'' "  : "" } 
+           <br/>
+           <br/>Canopy: { hoverInfo.object.properties.CANOPYW !== 0? " " + hoverInfo.object.properties.CANOPYW + "m "  : "" }
+           <br/>Crown radius: { hoverInfo.object.properties.CrownRad !== 0? " " + hoverInfo.object.properties.CrownRad + "m   "  : "" }
+           <br/>Height: { hoverInfo.object.properties.HTOTAL !== 0 ? " "  + hoverInfo.object.properties.HTOTAL + "m "  : "" } 
+           <br/>Diameter: { hoverInfo.object.properties.DBH !== 0 ? " "  + hoverInfo.object.properties.DBH + "'' "  : "" } 
        {/*    <br/> <i>planted the  { Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(+hoverInfo.object.properties.INW_DATE)) }</i><br/>
       */} 
          <br/> { hoverInfo.object.properties.Cultivar !== "" && hoverInfo.object.properties.Cultivar !== null? " by " + hoverInfo.object.properties.Cultivar  : "" }
@@ -176,6 +209,28 @@ function App() {
           mapboxAccessToken={MAPBOX_ACCESS_TOKEN} 
           mapStyle="mapbox://styles/mapbox/light-v11"
           />
+
+          <div className="tree-selector" onChange={handleChange}  > <p>Select a tree specie</p>
+          <ul>
+            <li  key="all"><input type="radio" value="all" name="all" checked= {selectedOption === "all"}   onChange={console.log("changed")}
+></input>All
+</li>
+          {treeFamValid.map((treeFamValid, index) =>
+          (
+<li  key={index}>
+  <input type="radio" value={treeFamValid}  
+    onChange={console.log("changed " + selectedOption)}
+checked={selectedOption === treeFamValid } 
+  name={treeFamValid}>
+
+  </input>
+{treeFamValid}
+</li>
+
+         ) ) }
+            </ul>
+            
+            </div>
 </DeckGL>   
  </div>
   );
