@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/adoptatree/static/css/main.d91a53c9.css",
-    "main.js": "/adoptatree/static/js/main.6ed8eb98.js",
+    "main.css": "/adoptatree/static/css/main.145ae57b.css",
+    "main.js": "/adoptatree/static/js/main.bdc053ad.js",
     "static/js/483.3ac7e81f.chunk.js": "/adoptatree/static/js/483.3ac7e81f.chunk.js",
     "static/js/787.530bb486.chunk.js": "/adoptatree/static/js/787.530bb486.chunk.js",
     "static/js/mapbox-gl-csp-worker.59ad5184.worker.js": "/adoptatree/static/js/mapbox-gl-csp-worker.59ad5184.worker.js",
     "index.html": "/adoptatree/index.html",
-    "main.d91a53c9.css.map": "/adoptatree/static/css/main.d91a53c9.css.map",
-    "main.6ed8eb98.js.map": "/adoptatree/static/js/main.6ed8eb98.js.map",
+    "main.145ae57b.css.map": "/adoptatree/static/css/main.145ae57b.css.map",
+    "main.bdc053ad.js.map": "/adoptatree/static/js/main.bdc053ad.js.map",
     "483.3ac7e81f.chunk.js.map": "/adoptatree/static/js/483.3ac7e81f.chunk.js.map",
     "787.530bb486.chunk.js.map": "/adoptatree/static/js/787.530bb486.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d91a53c9.css",
-    "static/js/main.6ed8eb98.js"
+    "static/css/main.145ae57b.css",
+    "static/js/main.bdc053ad.js"
   ]
 }
