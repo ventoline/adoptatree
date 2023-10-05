@@ -1,13 +1,14 @@
 import './App.css';
 import React, { useRef, useEffect, useState } from 'react';
-import DeckGL, { MapView, View } from 'deck.gl';
+import DeckGL, { CompositeLayer, MapView, View } from 'deck.gl';
 import {IconLayer, ScatterplotLayer} from '@deck.gl/layers';
 import {Map, StaticMap, MapContext, NavigationControl} from 'react-map-gl';
+import {MapboxLayer} from '@deck.gl/mapbox';
+
 import {DataFilterExtension} from '@deck.gl/extensions';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './index.css';
-import iconic from './oak.png'
 
 import  data  from './ontario_place_tree_species.json';
 import  data2  from './trees_west_island.json';
@@ -142,10 +143,40 @@ const INITIAL_VIEW_STATE = {
   bearing: 0
 };
 
-const ICON_MAPPING = {
-  marker: {x: 0, y: 0, width: 128, height: 128, mask: true}
-};
-
+/* const biluLayer = new MapboxLayer {
+  'id': 'add-3d-buildings',
+  'source': 'composite',
+  'source-layer': 'building',
+  'filter': ['==', 'extrude', 'true'],
+  'type': 'fill-extrusion',
+  'minzoom': 15,
+  'paint': {
+  'fill-extrusion-color': '#aaa',
+   
+  // Use an 'interpolate' expression to
+  // add a smooth transition effect to
+  // the buildings as the user zooms in.
+  'fill-extrusion-height': [
+  'interpolate',
+  ['linear'],
+  ['zoom'],
+  15,
+  0,
+  15.05,
+  ['get', 'height']
+  ],
+  'fill-extrusion-base': [
+  'interpolate',
+  ['linear'],
+  ['zoom'],
+  15,
+  0,
+  15.05,
+  ['get', 'min_height']
+  ],
+  'fill-extrusion-opacity': 0.6
+  };
+ */
 function App() {
   const [selectedOption, setSelectedOption] = useState('all');
 
@@ -173,7 +204,7 @@ function App() {
     }), 
     getPosition:  d => d.geometry.coordinates ,
     //  getRadius:d => ((d.properties.CrownRad + 1)),
-     getSize: d => ((d.properties.CrownRad + 1) * 3 ),
+     getSize: d => ((d.properties.CrownRad + 1) * 1 ),
    //  getFillColor:  d => ((d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418) /* && d.properties.SP_CODE !== "DEAD" */ )? 
       sizeScale: 1,
       sizeUnits : "meters",
@@ -239,6 +270,8 @@ function App() {
         
 
 })
+
+
 
   ];
 
@@ -313,7 +346,8 @@ function App() {
 
           <Map 
           mapboxAccessToken={MAPBOX_ACCESS_TOKEN} 
-          mapStyle="mapbox://styles/mapbox/light-v11"
+          mapStyle="mapbox://styles/ventoline/ck9w3m3mv02qy1io3kas57of9" /* "mapbox://styles/mapbox/light-v9" */
+          
           />
 </DeckGL> 
           <div className="tree-selector" onChange={handleChange}  > 
