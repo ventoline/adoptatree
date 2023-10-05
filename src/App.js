@@ -138,7 +138,7 @@ for (let i = colors.length-1; i < treeTypes.length -1; i++ )
 const INITIAL_VIEW_STATE = {
   longitude: -79.42,  //-122.41669,
   latitude: 43.628077, //37.7853,
-  zoom: 17.25,
+  zoom: 17.5,//17.25,
   pitch: 0,
   bearing: 0
 };
@@ -204,7 +204,7 @@ function App() {
     }), 
     getPosition:  d => d.geometry.coordinates ,
     //  getRadius:d => ((d.properties.CrownRad + 1)),
-     getSize: d => ((d.properties.CrownRad + 1) * 1 ),
+     getSize: d => ((d.properties.CrownRad + 1) * 2 ),
    //  getFillColor:  d => ((d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418) /* && d.properties.SP_CODE !== "DEAD" */ )? 
       sizeScale: 1,
       sizeUnits : "meters",
