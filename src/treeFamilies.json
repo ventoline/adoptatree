@@ -54,7 +54,7 @@
         "SP_CODE" : "rhus-typ", 
         "full-name" : "Rhus typhina", 
         "common-name": "Staghorn Sumac",
-        "family" : "Anacardiaceae"
+        "family" : "Sumac" 
       
     },
 
@@ -462,8 +462,8 @@
 
     {
         "SP_CODE" : "popu-del", 
-        "full-name" : "Populus Deltoides ", 
-        "common-name": "Eastern Cottonwood ",
+        "full-name" : "Populus Deltoides", 
+        "common-name": "Eastern Cottonwood",
         "family" : "Poplar"
       
     },
@@ -485,7 +485,7 @@
         "SP_CODE" : "crat-sp", 
         "full-name" : "Crataegus spp. ", 
         "common-name": "Hawthorn",
-        "family" : "Rosaceae"
+        "family" : "Hawthorn"
       
     },
 
@@ -507,7 +507,7 @@
         "SP_CODE" : "loni-tat", 
         "full-name" : "Lonicera tatarica", 
         "common-name": "Tartarian honeysuckle",
-        "family" : "Dipsacales"
+        "family" : "Honeysuckle"
       
     },
 

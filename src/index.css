@@ -23,59 +23,69 @@ code {
 
 .btn{
 
-
+  padding: 20px 28px 20px 28px;
     appearance: button;
     backface-visibility: hidden;
-    background-color: #405cf5;
-    border-radius: 6px;
+    background-color: #179ef4;
+    border-radius: 4px;
     border-width: 0;
     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-    font-size: 150%;
+    font-family: "Barlow Condensed", Sans-serif, -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
     height: 66px;
     line-height: 1.15;
     outline: none;
     overflow: hidden;
     text-align: center;
-    text-transform: none;
     transform: translateZ(0);
     transition: all .2s,box-shadow .08s ease-in;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 200px;
   }
   
   .btn:disabled {
     cursor: default;
   }
   
-  .btn:focus {
-    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+  .btn:hover {
+    background-color: #0059d2;
+     box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
   }
 
 
   .infoBox{
     padding:0px  20px 20px ;
     margin:20px;
-    width: 230px;
-    background-color: rgba(173, 216, 230, 0.7);
-    color: rgb(0, 13, 26);
+    width: 210px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: rgb(201, 220, 240);
     position: absolute;
     border-radius: 5px; 
     top: 0;
     left:0;
     z-index: 50;
+
   }
+  
+  .infoBox button{ 
+    margin:  auto;
+    margin-bottom:0;  
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
 
     h2 {
       margin-top: 20px; 
       margin-bottom: -10px; 
-      line-height: 90%;
-      font-size: 30px;
+      line-height: 100%;
+      font-size: 28px;
       font-size-adjust: inherit;
     }
 
@@ -91,12 +101,17 @@ font-style  : italic;
 
     .tree-selector{
 position: absolute;
-padding:20px;
+padding:15px 15px 5px 15px  ;
 bottom:0px;
 width:100vw;
-      background-color: rgba(173, 216, 230, 0.473);
+      background-color: rgba(0, 0, 0, 0.473);
       column-count: 5;
+      color:rgb(233, 233, 233);
+border-top:thin solid rgb(56, 56, 56);
+    }
 
+    .tree-selector input[type="radio"]{
+     cursor: pointer;
     }
 
     ul {
