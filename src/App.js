@@ -87,12 +87,7 @@ let   treeTypes  = [];
       
         treeFamValid = temp.filter((item,
           index) => temp.indexOf(item) === index);
-        
-        
-      //  console.log("treeValid");
-       // console.log(treeValid);
-       // console.log("treeFamValid");
-       // console.log(treeFamValid);
+     
 //
         console.log("treeFam2Valid");
         console.log(treeFam2Valid);
@@ -142,41 +137,7 @@ const INITIAL_VIEW_STATE = {
   pitch: 40,
   bearing: 0
 };
-
-/* const biluLayer = new MapboxLayer {
-  'id': 'add-3d-buildings',
-  'source': 'composite',
-  'source-layer': 'building',
-  'filter': ['==', 'extrude', 'true'],
-  'type': 'fill-extrusion',
-  'minzoom': 15,
-  'paint': {
-  'fill-extrusion-color': '#aaa',
-   
-  // Use an 'interpolate' expression to
-  // add a smooth transition effect to
-  // the buildings as the user zooms in.
-  'fill-extrusion-height': [
-  'interpolate',
-  ['linear'],
-  ['zoom'],
-  15,
-  0,
-  15.05,
-  ['get', 'height']
-  ],
-  'fill-extrusion-base': [
-  'interpolate',
-  ['linear'],
-  ['zoom'],
-  15,
-  0,
-  15.05,
-  ['get', 'min_height']
-  ],
-  'fill-extrusion-opacity': 0.6
-  };
- */
+ 
 function App() {
   const [selectedOption, setSelectedOption] = useState('all');
 
@@ -276,7 +237,8 @@ function App() {
   ];
 
   return (
-    <div><button className="btn mainBtn"  > Find out more </button>
+    <div className="container-map">
+      <button className="btn mainBtn"  > Find out more </button>
 
       <DeckGL
     initialViewState={INITIAL_VIEW_STATE}
@@ -323,7 +285,7 @@ function App() {
         <br/><i id="sideNote">   { hoverInfo.object.properties.Creator !="" ||  hoverInfo.object.properties.Creator !="null"? "listed by " + hoverInfo.object.properties.Creator + " ": " "} 
          the {  Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(+hoverInfo.object.properties.CreationDate)) } </i>
           </p> */}
-<p></p>
+          <p></p>
           { hoverInfo.object.properties.SP_CODE !== "DEAD" && (
             
           <button className="btn"> 
@@ -342,16 +304,16 @@ function App() {
  */
 )}
         </div>
-      )}{  /* */ }
-
+      )}
           <Map 
           mapboxAccessToken={MAPBOX_ACCESS_TOKEN} 
           mapStyle="mapbox://styles/ventoline/ck9w3m3mv02qy1io3kas57of9" /* "mapbox://styles/mapbox/light-v9" */
           
           />
-</DeckGL> 
+
+          
           <div className="tree-selector" onChange={handleChange}  > 
-         <div style={{display: 'flex', height:'100%', minHeight: '100%' }}> <p>Select a tree Family</p></div>
+         <div style={{display: 'flex', height:'100%', minHeight: '100%' , margin:'20px 0 0  20px'}}> <p>Select a tree Family</p></div>
          <div style={{display: 'flex', height:'100%'}}> <ul>
             <li  key="all"><input type="radio" value="all" name="all" onChange={console.log("changed")} checked= {selectedOption === "all"}   readOnly 
 ></input>All
@@ -372,8 +334,9 @@ checked={selectedOption === el }
             </ul></div>
             
             </div>
-  {/*  */}
+ </DeckGL> 
  </div>
+
   );
 }
 

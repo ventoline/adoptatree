@@ -101,13 +101,14 @@ font-style  : italic;
 
     .tree-selector{
 position: absolute;
-padding:15px 15px 5px 15px  ;
+padding:0;
 bottom:0px;
-width:100%;
+ width:100%;
       background-color: rgba(0, 0, 0, 0.473);
       column-count: 5;
       color:rgb(233, 233, 233);
 border-top:thin solid rgb(56, 56, 56);
+overflow: hidden;
     }
 
     .tree-selector input[type="radio"]{
@@ -115,9 +116,18 @@ border-top:thin solid rgb(56, 56, 56);
     }
 
     ul {
+      padding-right:15px ;
       list-style-type: none;
     }
     li{
 
-padding: 5px
+ padding: 5px;
+    }
+
+
+    .container-map{
+
+width:100%;
+overflow:hidden;
+
     }
