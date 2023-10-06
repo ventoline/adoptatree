@@ -103,7 +103,7 @@ font-style  : italic;
 position: absolute;
 padding:15px 15px 5px 15px  ;
 bottom:0px;
-width:100vw;
+width:100%;
       background-color: rgba(0, 0, 0, 0.473);
       column-count: 5;
       color:rgb(233, 233, 233);

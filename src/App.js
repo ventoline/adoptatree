@@ -136,10 +136,10 @@ for (let i = colors.length-1; i < treeTypes.length -1; i++ )
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
-  longitude: -79.42,  //-122.41669,
-  latitude: 43.628077, //37.7853,
-  zoom: 17.5,//17.25,
-  pitch: 0,
+  longitude: -79.4204,  //-122.41669,
+  latitude: 43.6278, //37.7853,
+  zoom: 17.25,//18,//17.5,//17.25,
+  pitch: 40,
   bearing: 0
 };
 
