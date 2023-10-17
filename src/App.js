@@ -153,6 +153,26 @@ function App() {
 
   const layers = [
 
+    new IconLayer({
+      id: "shadows",
+    data: data2.features, 
+    getIcon: d =>({ url:  icons[treeFam2Valid.indexOf(d.properties.family)],
+   width: 128,
+   height: 128,//anchorY:128, 
+   mask:true //needed for colors
+  }), 
+  billboard : false,
+  getColor: d => [0,0,0, 150],
+  getPosition:  d => ([d.geometry.coordinates[0], (d.geometry.coordinates[1] )] ),
+   getSize: d => ((d.properties.CrownRad + 1) * 2 ),
+    sizeScale: 1.15,
+    sizeUnits : "meters",
+    sizeMinPixels : 12,
+    getAngle : d =>  45,
+    getPixelOffset:[-8,8]
+   
+})
+,
    // new ScatterplotLayer({
       new IconLayer({
         id: "trees",
@@ -160,7 +180,7 @@ function App() {
       getIcon: d =>({ url:  icons[treeFam2Valid.indexOf(d.properties.family)],//  poplarIco,
      width: 128,
      height: 128,
-     //anchorY:128, 
+    // anchorY:128, 
      mask:true //needed for colors
     }), 
     getPosition:  d => d.geometry.coordinates ,
@@ -170,7 +190,7 @@ function App() {
       sizeScale: 1,
       sizeUnits : "meters",
       sizeMinPixels : 12,
-      getAngle : d => (Math.random()*360 ),   
+      getAngle : d => ((Math.random()*180)-90 ),   
      
        getColor: d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)?  /* && d.properties.SP_CODE !== "DEAD" */ 
        [
@@ -227,6 +247,9 @@ function App() {
         d.object ?    console.log( treeFamilies.find((el) => el.SP_CODE === d.object.properties.tag).family  )  :  console.log(d);
         d.object && (d.object.geometry.coordinates[1] < 43.6293  &&  d.object.geometry.coordinates[0] < -79.418) /* && d.object.properties.SP_CODE !== "DEAD" */?  
         setHoverInfo(d) :   console.log( "out of range "+ d); 
+      },
+      parameters: {
+        depthTest: false
       }
         
 
@@ -307,7 +330,9 @@ function App() {
       )}
           <Map 
           mapboxAccessToken={MAPBOX_ACCESS_TOKEN} 
-          mapStyle="mapbox://styles/ventoline/ck9w3m3mv02qy1io3kas57of9" /* "mapbox://styles/mapbox/light-v9" */
+          mapStyle="mapbox://styles/ventoline/clnulhmos00xz01rdaubl2341"
+           /*"mapbox://styles/ventoline/ck9w3m3mv02qy1io3kas57of9"  // prev style (not sat)
+                 "mapbox://styles/mapbox/light-v9" */
           
           />
 
