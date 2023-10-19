@@ -270,6 +270,14 @@ function App() {
   /*  getTooltip = {({object}) => object && object.message}
   */    >
 
+{hoverInfo.object == null  && ( 
+        <div className="infoBox" style={{   /* left: hoverInfo.x, top: hoverInfo.y */ }}>
+                   <div style={{minHeightheight: '50px'}}>
+                    <h2 style={{textAlign: 'center'}}> West Island Trees<br/>of Ontario Place For All<br/></h2>
+                    <p></p> <p><br/>Hover the map to learn about Hough's Trees.</p>
+   </div> 
+</div>
+)}
 
 
      {hoverInfo.object && (

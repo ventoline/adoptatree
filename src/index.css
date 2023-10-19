@@ -70,6 +70,8 @@ code {
     top: 0;
     left:0;
     z-index: 50;
+    transition: height .5s;
+
 
   }
   
@@ -79,6 +81,9 @@ code {
     display: flex;
     justify-self: center;
     align-items: center;
+    transition: width .5s;
+
+
 }
 
     h2 {
