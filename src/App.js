@@ -131,7 +131,7 @@ for (let i = colors.length-1; i < treeTypes.length -1; i++ )
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
-  longitude: -79.4204,  //-122.41669,
+  longitude: -79.420,  //-122.41669,
   latitude: 43.6278, //37.7853,
   zoom: 17.25,//18,//17.5,//17.25,
   pitch: 40,
@@ -271,7 +271,7 @@ function App() {
   */    >
 
 {hoverInfo.object == null  && ( 
-        <div className="infoBox" style={{   /* left: hoverInfo.x, top: hoverInfo.y */ }}>
+        <div className="infoBox"   key="box" style={{   /* left: hoverInfo.x, top: hoverInfo.y */ }}>
                    <div style={{minHeightheight: '50px'}}>
                     <h2 style={{textAlign: 'center'}}> West Island Trees<br/>of Ontario Place For All<br/></h2>
                     <p></p> <p><br/>Hover the map to learn about Hough's Trees.</p>
@@ -283,7 +283,7 @@ function App() {
      {hoverInfo.object && (
 
 
-        <div className="infoBox" style={{   /* left: hoverInfo.x, top: hoverInfo.y */ }}>
+        <div className="infoBox"  key="box"  style={{   /* left: hoverInfo.x, top: hoverInfo.y */ }}>
 
           <div style={{height: '50px'}}>
             <h2 > { hoverInfo.object.properties.full_name.split("(")[0]}</h2>
@@ -319,7 +319,7 @@ function App() {
           <p></p>
           { hoverInfo.object.properties.SP_CODE !== "DEAD" && (
             
-          <button className="btn"> 
+          <button key="btn" className="btn"> 
           {  //adjust the article before a vowel
           (hoverInfo.object.properties.family.charAt(0) === "A" ||  hoverInfo.object.properties.family.charAt(0) === "E" || 
            hoverInfo.object.properties.family.charAt(0) === "I" ||  hoverInfo.object.properties.family.charAt(0) === "O" || 
