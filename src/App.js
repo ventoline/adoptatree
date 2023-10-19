@@ -261,7 +261,7 @@ function App() {
 
   return (
     <div className="container-map">
-      <button className="btn mainBtn"  > Find out more </button>
+   { /*  <button className="btn mainBtn"  > Find out more </button> */}
 
       <DeckGL
     initialViewState={INITIAL_VIEW_STATE}
