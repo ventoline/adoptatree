@@ -345,11 +345,14 @@ function App() {
           />
 
           
-          <div className="tree-selector" onChange={handleChange}  > 
-         <div style={{display: 'flex', height:'100%', minHeight: '100%' , margin:'20px 0 0  20px'}}> <p>Select a tree Family</p></div>
-         <div style={{display: 'flex', height:'100%'}}> <ul>
-            <li  key="all"><input type="radio" value="all" name="all" onChange={console.log("changed")} checked= {selectedOption === "all"}   readOnly 
-></input>All
+          <div className="tree-selector-vert" onChange={handleChange}  > 
+         <div className='tree-list-title' style={{/*  height:'100%', minHeight: '100%' , */ width:'100vw', margin:'20px 0 0  20px'}}> <h3>Tree Families </h3><br/> </div>
+         <div className='tree-list'>
+        <ul>
+            <li  key="all">
+              <input type="radio" value="all" name="all" onChange={console.log("changed")} checked= {selectedOption === "all"}   readOnly >
+  </input>
+  All
 </li>
           {treeFam2Valid.map((el, index) =>
           (
@@ -365,7 +368,7 @@ checked={selectedOption === el }
 
          ) ) }
             </ul></div>
-            
+          
             </div>
  </DeckGL> 
  </div>

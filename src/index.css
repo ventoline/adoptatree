@@ -104,11 +104,13 @@ font-style  : italic;
       font-size: smaller;
     }
 
-    .tree-selector{
+    .tree-selector-vert{
 position: absolute;
-padding:0;
-bottom:0px;
- width:100%;
+padding:10px;
+top:0px;
+right:0px;
+ width:170px;
+ height:calc(99% - 31px);
       background-color: rgba(0, 0, 0, 0.473);
       column-count: 5;
       color:rgb(233, 233, 233);
@@ -116,18 +118,57 @@ border-top:thin solid rgb(56, 56, 56);
 overflow: hidden;
     }
 
-    .tree-selector input[type="radio"]{
+    
+
+    .tree-selector-vert input[type="radio"]{
      cursor: pointer;
     }
 
     ul {
-      padding-right:15px ;
+      width:150px;
+      display:block;
+      padding-left:15px;
       list-style-type: none;
+  float: left;
+  clear:both;
     }
     li{
+      display:inline-block;
+  float:left;
+  clear:both;
 
- padding: 5px;
+ padding: 5px; 
     }
+
+    .tree-list{
+display:inline-block;
+
+    }
+
+    .tree-list-title{
+display:inline-block;
+
+
+    }
+
+    .tree-selector{
+      position: absolute;
+      padding:0;
+      bottom:0px;
+       width:100%;
+            background-color: rgba(0, 0, 0, 0.473);
+            column-count: 5;
+            color:rgb(233, 233, 233);
+      border-top:thin solid rgb(56, 56, 56);
+      overflow: hidden;
+          }
+      
+          .tree-selector input[type="radio"]{
+           cursor: pointer;
+          }
+      
+
+
 
 
     .container-map{
