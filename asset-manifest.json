@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/adoptatree/static/css/main.eeed9f47.css",
-    "main.js": "/adoptatree/static/js/main.36efadbf.js",
+    "main.css": "/adoptatree/static/css/main.e8ded7fe.css",
+    "main.js": "/adoptatree/static/js/main.c63366ff.js",
     "static/js/483.3ac7e81f.chunk.js": "/adoptatree/static/js/483.3ac7e81f.chunk.js",
     "static/js/787.530bb486.chunk.js": "/adoptatree/static/js/787.530bb486.chunk.js",
     "static/media/spruceIcon.png": "/adoptatree/static/media/spruceIcon.df5b4a639ff6d20d4909.png",
     "static/media/willowIcon.png": "/adoptatree/static/media/willowIcon.870a2c5463fff7b9ab57.png",
     "index.html": "/adoptatree/index.html",
-    "main.eeed9f47.css.map": "/adoptatree/static/css/main.eeed9f47.css.map",
-    "main.36efadbf.js.map": "/adoptatree/static/js/main.36efadbf.js.map",
+    "main.e8ded7fe.css.map": "/adoptatree/static/css/main.e8ded7fe.css.map",
+    "main.c63366ff.js.map": "/adoptatree/static/js/main.c63366ff.js.map",
     "483.3ac7e81f.chunk.js.map": "/adoptatree/static/js/483.3ac7e81f.chunk.js.map",
     "787.530bb486.chunk.js.map": "/adoptatree/static/js/787.530bb486.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.eeed9f47.css",
-    "static/js/main.36efadbf.js"
+    "static/css/main.e8ded7fe.css",
+    "static/js/main.c63366ff.js"
   ]
 }
