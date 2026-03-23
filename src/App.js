@@ -25,7 +25,6 @@ import larchIco from "./larchIcon.png";
 import spruceIco from "./spruceIcon.png";
 import oakIco from "./oak.png";
 
-console.log(mapleIco);
 const icons = [
   oakIco,
   mapleIco,
@@ -44,7 +43,8 @@ const icons = [
   larchIco,
 ];
 const MAPBOX_ACCESS_TOKEN =
-  // "pk.pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjByOXR6ZDBrYmcybG15enIwODduazMifQ.ubROrEjjoWsUAHdFR15M7g.pelghd1_gDY9DeAYv3rrAw";
+  //  "pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjByOXR6ZDBrYmcybG15enIwODduazMifQ.ubROrEjjoWsUAHdFR15M7g";
+  //  "pk.pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbjByOXR6ZDBrYmcybG15enIwODduazMifQ.ubROrEjjoWsUAHdFR15M7g.pelghd1_gDY9DeAYv3rrAw";
   "pk.eyJ1IjoidmVudG9saW5lIiwiYSI6ImNsbzUwcG50ODAyNTYya215aWhicnNwMXoifQ.y0r1JiZmWtv6xSatLKPDiA";
 //const  dataTrees = require("./ontario_place_tree_species.json");// customData;
 
@@ -81,22 +81,17 @@ for (let i = 0; i < data2.features.length; i++) {
         dataFam.TreeFamilies[j].SP_CODE === data2.features[i].properties.tag
       ) {
         temp.push(dataFam.TreeFamilies[j].family);
-        //  console.log(dataFam.TreeFamilies[j].SP_CODE)
-        // console.log(dataFam.TreeFamilies[j].family)
         break;
       }
     }
   }
 }
-console.log(treeArray);
 
 treeTypes = treeArray.filter(
   (item, index) => treeArray.indexOf(item) === index,
 );
 ptType = ptArray.filter((item, index) => ptArray.indexOf(item) === index);
 treeFam2Valid = temp2.filter((item, index) => temp2.indexOf(item) === index);
-
-// console.log(treeTypes);
 
 treeValid = treeValid.filter(
   (item, index) => treeValid.indexOf(item) === index,
@@ -105,8 +100,6 @@ treeValid = treeValid.filter(
 treeFamValid = temp.filter((item, index) => temp.indexOf(item) === index);
 
 //
-console.log("treeFam2Valid");
-console.log(treeFam2Valid);
 
 for (let i = 0; i < dataFam.TreeFamilies.length; i++) {
   // if(i ==0){
@@ -119,8 +112,6 @@ for (let i = 0; i < dataFam.TreeFamilies.length; i++) {
   treeFamilies.push(tree);
   // ptArray.push( data.features[i].geometry.type)
 }
-
-console.log(treeFamilies);
 
 //colors for icons_______________________________________________________________
 
@@ -137,8 +128,6 @@ for (let i = colors.length - 1; i < treeTypes.length - 1; i++) {
 }
 
 //colors[13] = [250,245,240]
-console.log("colors");
-console.log(colors);
 
 // tooltip
 
@@ -156,7 +145,6 @@ function App() {
 
   function handleChange(event) {
     setSelectedOption(event.target.value);
-    console.log(event.target.value);
   }
 
   const [hoverInfo, setHoverInfo] = useState(false);
@@ -260,12 +248,12 @@ function App() {
       //extensions: [new DataFilterExtension({filterSize: 1})],
       pickable: true, //d => (d.geometry.coordinates[1] < 43.6293  &&  d.geometry.coordinates[0] < -79.418)? true : false ,
       onHover: (d) => {
-        d.object
+        /*   d.object
           ? console.log(
               treeFamilies.find((el) => el.SP_CODE === d.object.properties.tag)
                 .family,
             )
-          : console.log(d);
+          : console.log(d); */
         d.object &&
         d.object.geometry.coordinates[1] < 43.6293 &&
         d.object.geometry.coordinates[0] <
@@ -431,7 +419,7 @@ function App() {
                   type="radio"
                   value="all"
                   name="all"
-                  onChange={console.log("changed")}
+                  onChange={console.log("")}
                   checked={selectedOption === "all"}
                   readOnly
                 ></input>
@@ -442,7 +430,7 @@ function App() {
                   <input
                     type="radio"
                     value={el}
-                    onChange={console.log("changed " + selectedOption)}
+                    /*   onChange={console.log("changed " + selectedOption)} */
                     checked={selectedOption === el}
                     name={el}
                     readOnly
